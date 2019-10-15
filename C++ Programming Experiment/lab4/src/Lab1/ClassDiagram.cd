@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Circle">
+    <Position X="3" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAABABAAAgAAAAAAAIAEAAAAAgEAAAAAAABAAAAAQA=</HashCode>
+      <FileName>Circle.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="color">
+    <Position X="5.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAJgAEAAAAAAAAACIAQABAAAAAYg=</HashCode>
+      <FileName>color.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="controlEge">
+    <Position X="7.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>controlEge.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="point">
+    <Position X="7.5" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAIGAAAAAAAAAAAAAABgAGAAAAA=</HashCode>
+      <FileName>point.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="rect">
+    <Position X="3" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgACAAAAAAAIAIAAEAAAACEAAAAAAAAAAwAA=</HashCode>
+      <FileName>rect.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="shape">
+    <Position X="0.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQgAAAQBBAAAAAIAAAAAgAAAQBAACAAAAAEABAA=</HashCode>
+      <FileName>shape.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tria">
+    <Position X="0.5" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAQAAAAAAAAACAIAAAAAAAEAAAAAgEAAAAAAAAA=</HashCode>
+      <FileName>tria.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="宋体" Size="9" />
+</ClassDiagram>
