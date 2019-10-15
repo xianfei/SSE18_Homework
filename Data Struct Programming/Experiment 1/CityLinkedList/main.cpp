@@ -42,7 +42,7 @@ struct CityLinkList{
         CityLinkList* nextptr=next;
         while(nextptr->name!=name){
             nextptr=nextptr->next;
-            if(nextptr== nullptr)throw std::out_of_range("Can't find"+name);
+            if(nextptr== nullptr)throw std::out_of_range("Can't find "+name);
         }
         return nextptr->c;
     }
@@ -50,7 +50,7 @@ struct CityLinkList{
         CityLinkList *nextptr=next,*willDel;
         while(nextptr->next->name!=name){
             nextptr=nextptr->next;
-            if(nextptr->next == nullptr)throw std::out_of_range("Can't find"+name);
+            if(nextptr->next == nullptr)throw std::out_of_range("Can't find "+name);
         }
         willDel=nextptr->next;
         nextptr->next=nextptr->next->next;
@@ -73,5 +73,10 @@ int main() {
     std::cout << "After deleted Tianjin, ";
     std::cout << "the cities which distance to (101,101) under than 5 are "
             <<cityLinkList.getByDistance(Coordinate(101,101),5) << std::endl;
-
+    try {
+        std::cout << cityLinkList.search("Tianjin") << std::endl;
+    }catch (std::exception &e){
+        std::cout << e.what();
+    }
+    return 0;
 }
