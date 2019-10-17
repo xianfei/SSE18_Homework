@@ -10,7 +10,6 @@ struct Coordinate{ // 存储坐标
     double getDistance(const Coordinate& c){ // 使用勾股定理计算距离
         return sqrt(pow(abs(x-c.x),2)+pow(abs(y-c.x),2));
     }
-
     friend std::ostream &operator<<(std::ostream &os, const Coordinate &coordinate) {
         os << "x: " << coordinate.x << " y: " << coordinate.y;
         return os;
