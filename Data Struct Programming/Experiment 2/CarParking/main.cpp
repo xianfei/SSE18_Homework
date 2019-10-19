@@ -25,7 +25,39 @@ struct Stack{
     }
 };
 
+template <class T>
+struct LkQueue{
+    struct Node{
+        Node *next= nullptr;
+        T data;
+    };
+    Node* rear= nullptr;
+    Node* front= nullptr;
+    void enqueue(const T& data){
+        Node* newNode = new Node;
+        if(rear== nullptr){
+            newNode->data=data;
+            rear=front=newNode;
+            return;
+        }
+        newNode->data=data;
+        rear->next=newNode;
+        rear=newNode;
+    }
+    T dequeue(){
+        Node* willDequeue = front;
+        if(willDequeue== nullptr)throw std::out_of_range("queue is empty");
+        front = front->next;
+        T willReturn=willDequeue->data;
+        delete(willDequeue);
+        return willReturn;
+    }
+};
+
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    LkQueue<int> q;
+    for(int i=0;i<10;i++)q.enqueue(i);
+    for(int i=0;i<10;i++)std::cout << q.dequeue() << std::endl;
+    q.dequeue();
     return 0;
 }
