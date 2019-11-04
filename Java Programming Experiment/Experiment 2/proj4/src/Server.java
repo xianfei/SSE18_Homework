@@ -46,7 +46,7 @@ public class Server implements Constants {
 class GameData implements Constants{
     private ArrayList<String> dataA=new ArrayList<>();
     private ArrayList<String> dataB=new ArrayList<>();
-    int round=0,aScore=0,bScore=0;
+    private int round=0,aScore=0,bScore=0;
     void updateA(String str){
         dataA.add(str);
         if(dataA.size()>round&&dataB.size()>round) print(round++);

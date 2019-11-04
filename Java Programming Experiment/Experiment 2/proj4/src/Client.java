@@ -6,17 +6,15 @@ import java.util.Random;
 public class Client {
     public static void main(String argv[]) {
         // TCP
-       ThreadA threadA = new ThreadA("localhost");
-       threadA.start();
-       // UDP
-        ThreadB threadB = new ThreadB("localhost");
-        threadB.start();
+        new ThreadA("localhost").start();
+        // UDP
+        new ThreadB("localhost").start();
     }
 }
 
 class ThreadA extends Thread implements Constants{
-    ObjectOutputStream toServer = null;
-    String host;
+    private ObjectOutputStream toServer = null;
+    private String host;
 
     public ThreadA(String host) {
         this.host = host;
@@ -57,7 +55,7 @@ class ThreadB extends Thread implements Constants{
     private byte[] buf = new byte[256]; // The byte array for sending and receiving datagram packets
     private InetAddress address; // Server InetAddress
     private DatagramPacket sendPacket; // The packet sent to the server
-    String host;
+    private String host;
 
     public ThreadB(String host) {
         this.host = host;
