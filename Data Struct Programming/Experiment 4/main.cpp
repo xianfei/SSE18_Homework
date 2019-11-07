@@ -8,6 +8,13 @@ struct BiTree {
     BiTree *lchild = nullptr, *rchild = nullptr;
 };
 
+// 将数组转化为指针
+template<typename Type,typename T>
+void createBiTree(BiTree<Type> *&biTreePtr, T ptr_) {
+    const Type* ptr=ptr_;
+    createBiTree(biTreePtr,ptr);
+}
+
 template<typename Type>
 void createBiTree(BiTree<Type> *&biTreePtr, const Type *&arrayPtr) {
     if (!*arrayPtr)return;
@@ -24,8 +31,8 @@ void createBiTree(BiTree<Type> *&biTreePtr, const Type *&arrayPtr) {
 }
 
 // 前序遍历（参数：二叉树的指针，遍历执行函数指针）
-template<typename Type, typename ParaType, typename RetType>
-void preOrderTraverse(BiTree<Type> *biTreePtr, RetType(*fun)(ParaType)) {
+template<typename Type, typename FunPtr>
+void preOrderTraverse(BiTree<Type> *biTreePtr, FunPtr fun) {
     if (biTreePtr == nullptr) return;
     fun(biTreePtr->data);
     preOrderTraverse(biTreePtr->lchild, fun);
@@ -33,8 +40,8 @@ void preOrderTraverse(BiTree<Type> *biTreePtr, RetType(*fun)(ParaType)) {
 }
 
 // 非递归前序遍历（参数：二叉树的指针，遍历执行函数指针）
-template<typename Type, typename ParaType, typename RetType>
-void preOrderTraverse_noRecursion(BiTree<Type> *biTreePtr, RetType(*fun)(ParaType)) {
+template<typename Type, typename FunPtr>
+void preOrderTraverse_noRecursion(BiTree<Type> *biTreePtr, FunPtr fun) {
     if (biTreePtr == nullptr) return;
     Stack<BiTree<Type> *> stack;
     stack.push(biTreePtr);
@@ -48,35 +55,100 @@ void preOrderTraverse_noRecursion(BiTree<Type> *biTreePtr, RetType(*fun)(ParaTyp
     }
 }
 
-template<typename Type, typename ParaType, typename RetType>
-void inOrderTraverse(BiTree<Type> *biTreePtr, RetType(*fun)(ParaType)) { // 中序遍历
+// 中序遍历（参数：二叉树的指针，遍历执行函数指针）
+template<typename Type, typename FunPtr>
+void inOrderTraverse(BiTree<Type> *biTreePtr, FunPtr fun) { // 中序遍历
     if (biTreePtr == nullptr) return;
     inOrderTraverse(biTreePtr->lchild, fun);
     fun(biTreePtr->data);
     inOrderTraverse(biTreePtr->rchild, fun);
 }
 
-template<typename Type, typename ParaType, typename RetType>
-void postOrderTraverse(BiTree<Type> *biTreePtr, RetType(*fun)(ParaType)) { // 后序遍历
+// 非递归中序遍历（参数：二叉树的指针，遍历执行函数指针）
+// 思路：一路寻找左子树 找不着了就找左子树的双亲的右子树继续
+template<typename Type, typename FunPtr>
+void inOrderTraverse_noRecursion(BiTree<Type> *biTreePtr, FunPtr fun) { // 中序遍历
+    if (biTreePtr == nullptr) return;
+    Stack<BiTree<Type> *> stack;
+    while(biTreePtr||!stack.isEmpty()){
+        if(biTreePtr){
+            stack.push(biTreePtr);
+            biTreePtr=biTreePtr->lchild;
+        }else{
+            biTreePtr=stack.pop();
+            fun(biTreePtr->data);
+            biTreePtr=biTreePtr->rchild;
+        }
+    }
+}
+
+// 后序遍历（参数：二叉树的指针，遍历执行函数指针）
+template<typename Type, typename FunPtr>
+void postOrderTraverse(BiTree<Type> *biTreePtr, FunPtr fun) { // 后序遍历
     if (biTreePtr == nullptr) return;
     postOrderTraverse(biTreePtr->lchild, fun);
     postOrderTraverse(biTreePtr->rchild, fun);
     fun(biTreePtr->data);
 }
 
+// 非递归后序遍历（参数：二叉树的指针，遍历执行函数指针）
+// 思路：把DLR前序遍历的LR交换，变为DRL。使用stack逆序输出变为LRD即后序。
+template<typename Type, typename FunPtr>
+void postOrderTraverse_noRecursion(BiTree<Type> *biTreePtr, FunPtr fun) {
+    if (biTreePtr == nullptr) return;
+    Stack<BiTree<Type> *> stack;
+    Stack<Type> result;
+    stack.push(biTreePtr);
+    while (!stack.isEmpty()) {
+        biTreePtr = stack.pop();
+        while (biTreePtr) {
+            result.push(biTreePtr->data);
+            if (biTreePtr->lchild)stack.push(biTreePtr->lchild);
+            biTreePtr = biTreePtr->rchild;
+        }
+    }
+    while(!result.isEmpty())fun(result.pop());
+}
+
+// RDL中序遍历（参数：二叉树的指针，遍历执行函数指针）
+template<typename Type>
+void printTreeByRDL(BiTree<Type> *biTreePtr, int depth= 0) { // 中序遍历
+    if (biTreePtr == nullptr) return;
+    ++depth;
+    printTreeByRDL(biTreePtr->rchild, depth);
+    for(int i=0;i<depth;i++)printf("\t");
+    std::cout << (biTreePtr->data);
+    putchar('\n');
+    printTreeByRDL(biTreePtr->lchild, depth);
+}
+
 int main() {
-    auto tree = new BiTree<char>;
-    // char str[20] = "ABC##DE#G##F###";
-    const char *s = "ABC##DE#G##F###";
-    createBiTree(tree, s);
-    printf("Pre Order Traverse: ");
+    // 测试遍历
+    BiTree<char> *tree= nullptr;
+    createBiTree(tree, "ABC##DE#G##F###");
+    printf("Pre order traverse output: \n");
     preOrderTraverse(tree, putchar);
-    printf("\nPre Order Traverse (no recursion): ");
+    printf("\nPre order traverse output (no recursion): \n");
     preOrderTraverse_noRecursion(tree, putchar);
-    printf("In Order Traverse: ");
+    printf("\nIn order traverse output: \n");
     inOrderTraverse(tree, putchar);
-    printf("Post Order Traverse: ");
+    printf("\nIn order traverse output (no recursion): \n");
+    inOrderTraverse_noRecursion(tree, putchar);
+    printf("\nPost order traverse output: \n");
     postOrderTraverse(tree, putchar);
-    // std::cout << "Hello, World!" << std::endl;
+    printf("\nPost order traverse output (no recursion): \n");
+    postOrderTraverse_noRecursion(tree, putchar);
+
+    // 测试RDL打印
+    BiTree<char> *treeForPrint= nullptr;
+    createBiTree(treeForPrint,"AB#D##CE#F###");
+    printf("\nPrint tree by RDL:\n");
+    printTreeByRDL(treeForPrint);
+
+    // 测试RDL打印
+    BiTree<char> *treeForPrint_empty= nullptr;
+    createBiTree(treeForPrint_empty,"");
+    printf("\nPrint empty tree by RDL:\n");
+    printTreeByRDL(treeForPrint_empty);
     return 0;
 }
