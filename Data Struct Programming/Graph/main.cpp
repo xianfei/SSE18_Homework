@@ -1,9 +1,19 @@
 #include <iostream>
 #include "am_graph.hpp"
 #include "al_graph.hpp"
+#include "queue.hpp"
+#include "stack.hpp"
 
+int main(){
+    Stack<int> queue;
+    for(int i=0;i<50;i++)queue.push(i);
+    for(int i=0;i<51;i++)try{std::cout<<queue.pop();}catch (std::exception &e){std::cout << e.what();}
+    for(int i=0;i<7;i++)queue.push(i);
+    for(int i=0;i<6;i++)try{std::cout<<queue.pop();}catch (std::exception &e){std::cout << e.what();}
+    std::cout << std::endl << queue.top() << queue.top();
+}
 
-int main() {
+int main_() {
 
     ///     0
     ///    /|
