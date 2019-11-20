@@ -15,7 +15,7 @@ class Stack{
     int size=0;
     int capacity=DEFAULT_SIZE;
 public:
-    ~Stack(){
+    virtual ~Stack(){
         free(_array);
     }
     T top(){

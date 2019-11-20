@@ -16,9 +16,10 @@ class Queue{
     Node* _rear= nullptr;
     Node* _front= nullptr;
 public:
-    ~Queue(){
+    virtual ~Queue(){
         while(_front != nullptr)pop();
     }
+    bool empty(){ return _front == nullptr;}
     void push(const T& data){
         Node* newNode = new Node;
         if(_rear == nullptr){

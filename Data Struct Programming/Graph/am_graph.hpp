@@ -12,14 +12,13 @@
 #include <initializer_list>
 
 template <typename VertexType>
-class AM_Graph{
-public:
+class AdjacencyMatrixGraph{
     int _vexNum=0,_arcNum=0;
     bool _isDirected = false;
     int **arcMatrix = nullptr;
     VertexType *vexList = nullptr;
-
-    AM_Graph(int vexNum, int arcNum, bool isDirected) : _vexNum(vexNum), _arcNum(arcNum), _isDirected(isDirected) {
+public:
+    AdjacencyMatrixGraph(int vexNum, int arcNum, bool isDirected) : _vexNum(vexNum), _arcNum(arcNum), _isDirected(isDirected) {
         arcMatrix = new int*[vexNum];
         for (int i=0;i<vexNum;i++) {
             arcMatrix[i]=new int[vexNum];
@@ -29,7 +28,7 @@ public:
         memset(vexList,0, sizeof(int)*vexNum);
     }
 
-    virtual ~AM_Graph() {
+    virtual ~AdjacencyMatrixGraph() {
         for (int i=0;i<_vexNum;i++) delete [] arcMatrix[i];
         delete [] arcMatrix;
         delete [] vexList;
@@ -58,7 +57,7 @@ public:
         }
     }
 
-    friend std::ostream &operator<<(std::ostream &os, const AM_Graph &graph) {
+    friend std::ostream &operator<<(std::ostream &os, const AdjacencyMatrixGraph &graph) {
         for(int i=0;i<graph._vexNum;i++){
             for(int j=0;j<graph._vexNum;j++){
                 os << graph.arcMatrix[i][j] << ' ';
