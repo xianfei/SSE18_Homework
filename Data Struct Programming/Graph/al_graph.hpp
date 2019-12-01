@@ -6,11 +6,11 @@
 #define GRAPH_AL_GRAPH_HPP
 
 #include <stdexcept>
-#include <initializer_list>
 #include <ostream>
 #include <tuple>
 #include <vector>
 #include "queue.hpp"
+#include "stack.hpp"
 
 template<typename VertexType>
 class AdjacencyListGraph {
@@ -23,6 +23,7 @@ class AdjacencyListGraph {
 
     bool _isDirected = false;
     int _vexNum = 0, _arcNum = 0;
+
     struct _vNode {
         VertexType v;
         ArcNode *next = nullptr;
@@ -44,27 +45,73 @@ private:  // dfs 的递归调用函数
     }
 
 public:  // 返回vector的深度优先搜素算法
-    std::vector<VertexType> dfs() {
+
+    std::vector<VertexType> dfs(){ return dfs(_vexList[0].v);}
+
+    std::vector<VertexType> dfs(VertexType startVex) { // 指定开始节点
+        int start=locateVex(startVex);
         bool *visited = new bool[_vexNum];
         std::vector<VertexType> result;
         for (int i = 0; i < _vexNum; ++i)visited[i] = false;
         for (int i = 0; i < _vexNum; ++i)
-            if (!visited[i])
-                _dfs(i, visited, [&result](VertexType v) -> void { result.push_back(v); });
+            if (!visited[(i+start)%_vexNum])
+                _dfs((i+start)%_vexNum, visited, [&result](VertexType v) -> void { result.push_back(v); });
         delete[] visited;
         return result;
     }
 
-    std::vector<VertexType> bfs() {
+    std::vector<VertexType> dfs_noRes() {
         bool *visited = new bool[_vexNum];
         std::vector<VertexType> result;
+        Stack<int> needVisited;
+        for (int i = 0; i < _vexNum; ++i)visited[i] = false;
+        for (int i = 0; i < _vexNum; ++i){
+            int nextVisit = i;
+            if (visited[nextVisit])continue;
+            do {
+                do {
+                    if (visited[nextVisit])break;
+                    visited[nextVisit] = true;
+                    result.push_back(_vexList[nextVisit].v);
+                    auto ptr = _vexList[nextVisit].next;
+                    if (ptr) {
+                        while (visited[ptr->adjVex]) {
+                            ptr = ptr->next;
+                            if (!ptr->next)break;
+                        }
+                        nextVisit = ptr->adjVex;
+                        ptr = ptr->next;
+                    } else break;
+                    if (ptr) {
+                        while (ptr->next != nullptr) {
+                            if (!visited[ptr->adjVex])needVisited.push(ptr->adjVex);
+                            ptr = ptr->next;
+                        }
+                        if (!visited[ptr->adjVex])needVisited.push(ptr->adjVex);
+                    }
+                } while (1);
+                if(needVisited.empty())break;
+                else nextVisit=needVisited.pop();
+            }while(1);
+            break;
+        }
+        delete[] visited;
+        return result;
+    }
+
+    std::vector<VertexType> bfs(){ return bfs(_vexList[0].v);}
+
+    std::vector<VertexType> bfs(VertexType startVex) {
+        int start=locateVex(startVex);
+        std::vector<VertexType> result;
+        bool *visited = new bool[_vexNum];
         for (int i = 0; i < _vexNum; ++i)visited[i] = false;
         Queue<int> queue;
         for (int i = 0; i < _vexNum; ++i) {
-            if (!visited[i]) {
-                queue.push(i);
-                result.push_back(_vexList[i].v);
-                visited[i] = true;
+            if (!visited[(i+start)%_vexNum]) {
+                queue.push((i+start)%_vexNum);
+                result.push_back(_vexList[(i+start)%_vexNum].v);
+                visited[(i+start)%_vexNum] = true;
             } else continue;
             while (!queue.empty()) {
                 auto ptr = _vexList[queue.pop()].next;
@@ -90,8 +137,6 @@ public:  // 返回vector的深度优先搜素算法
         return result;
     }
 
-public:
-
     AdjacencyListGraph(int vexNum, int arcNum, bool isDirected) : _vexNum(vexNum), _arcNum(arcNum),
                                                                   _isDirected(isDirected) {
         _vexList = new _vNode[vexNum];
@@ -108,7 +153,7 @@ public:
         return -1;
     }
 
-    void setVexes(std::initializer_list<VertexType> list) {
+    void setVexes(std::vector<VertexType> list) {
         int i = -1;
         for (const auto &item : list) {
             if (i + 1 == _vexNum)throw std::out_of_range("");
@@ -116,7 +161,7 @@ public:
         }
     }
 
-    void setArcs(std::initializer_list<std::tuple<VertexType, VertexType, int>> list) {
+    void setArcs(std::vector<std::tuple<VertexType, VertexType, int>> list) {
         for (const auto &[v1, v2, weight] : list) {
             int i = locateVex(v1), j = locateVex(v2);
             auto ptr = _vexList[i].next;
@@ -136,14 +181,14 @@ public:
 
     friend std::ostream &operator<<(std::ostream &os, const AdjacencyListGraph &graph) {
         for (int i = 0; i < graph._vexNum; i++) {
-            os << graph._vexList[i].v << "\t->\t";
+            os << i << '\t' <<graph._vexList[i].v << "\t->\t";
             auto ptr = graph._vexList[i].next;
             if (ptr) {
                 while (ptr->next != nullptr) {
-                    os << graph._vexList[ptr->adjVex].v << '\t' << ptr->weight << "\t->\t";
+                    os << ptr->adjVex << '\t' << ptr->weight << "\t->\t";
                     ptr = ptr->next;
                 }
-                os << graph._vexList[ptr->adjVex].v << '\t' << ptr->weight << "\t->\t^\t";
+                os << ptr->adjVex << '\t' << ptr->weight << "\t->\t^\t";
             } else os << "^\t";
             os << std::endl;
         }
