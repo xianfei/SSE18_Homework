@@ -65,23 +65,22 @@ public:  // 返回vector的深度优先搜素算法
         delete[] visited;
         return result;
     }
+    std::vector<VertexType> dfs_noRes(){ return dfs_noRes(_vexList[0].v);}
 
-    std::vector<VertexType> dfs_noRes() {
+    std::vector<VertexType> dfs_noRes(VertexType startVex) {
         bool *visited = new bool[_vexNum];
         std::vector<VertexType> result;
+        int start=locateVex(startVex);
         Stack<int> needVisited;
         for (int i = 0; i < _vexNum; ++i)visited[i] = false;
         for (int i = 0; i < _vexNum; ++i){
-            int nextVisit = i;
+            int nextVisit = (i+start)%_vexNum;
             if (visited[nextVisit])continue;
             do {
                 do {
                     if (visited[nextVisit])break;
                     visited[nextVisit] = true;
                     result.push_back(_vexList[nextVisit].v);
-                    if(!spanningTreeStack.empty())
-                        std::cout << _vexList[spanningTreeStack.top()].v << '-' << _vexList[nextVisit].v << std::endl;
-                    spanningTreeStack.push(nextVisit);
                     auto ptr = _vexList[nextVisit].next;
                     if (ptr) {
                         while (visited[ptr->adjVex]) {
@@ -99,12 +98,9 @@ public:  // 返回vector的深度优先搜素算法
                         if (!visited[ptr->adjVex])needVisited.push(ptr->adjVex);
                     }
                 } while (true);
-                spanningTreeStack.pop();
                 if(needVisited.empty())break;
                 else nextVisit=needVisited.pop();
             }while(true);
-
-            break;
         }
         delete[] visited;
         return result;
@@ -113,6 +109,7 @@ public:  // 返回vector的深度优先搜素算法
     std::vector<VertexType> bfs(){ return bfs(_vexList[0].v);}
 
     std::vector<VertexType> bfs(VertexType startVex) {
+        Stack<int> spanningTreeStack;
         int start=locateVex(startVex);
         std::vector<VertexType> result;
         bool *visited = new bool[_vexNum];
