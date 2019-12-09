@@ -36,7 +36,7 @@ void testHashing() {
     std::string testData[]={"wangxianfei","chenyitao","sutianyu","shihanpeng","xiedonglin",
                             "chenchuanzhi","pengsihao","hanrui","hourunning","xiekai",
                             "fangmoyi","jiahaochen","zhangaiqi","yaoliunian","lijiahe",
-                            "luxintong","zhouying","zhanglongwei","liao","zixinyuan",
+                            "luxintong","zhouying","zhanglongwei","hanyu","zixinyuan",
                             "xutianhang","heyujie","wangxiaochen","linanxin","zhangshuning",
                             "yanhaolong","zhangmingxin","majiaji","liutianyi","mayuchen"};
     HashingTable hashing(64);
@@ -59,7 +59,7 @@ void testHashing() {
 }
 
 int main() {
-    // testBST();
+    testBST();
     std::cout << '\n' << std::endl;
     testHashing();
     return 0;
