@@ -19,7 +19,7 @@ void testBST() {
     std::cout << "删除45 （仅存在左子树情况）：" << std::endl;
     bst.del(45);
     bst.print();
-    std::cout << "删除18 （仅存在左子树情况）：" << std::endl;
+    std::cout << "删除18 （仅存在右子树情况）：" << std::endl;
     bst.del(18);
     bst.print();
     std::cout << "删除23 （存在左右子树情况）：" << std::endl;
@@ -28,7 +28,17 @@ void testBST() {
     std::cout << "删除6 （叶子节点情况）：" << std::endl;
     bst.del(6);
     bst.print();
+}
 
+void testBST2() {
+    BSTree<int> bst;
+    bst.insert(2);
+
+    std::cout << "凹入表形式横向打印:" << std::endl;
+    bst.print();
+    std::cout << "删除4：" << std::endl;
+    bst.del(4);
+    bst.print();
 }
 
 void testHashing() {
