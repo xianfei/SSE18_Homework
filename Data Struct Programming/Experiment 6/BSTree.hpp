@@ -7,7 +7,6 @@
 
 #include <vector>
 #include <stdexcept>
-#include <algorithm>
 
 template<typename T>
 class BSTree {
@@ -124,12 +123,11 @@ public:
             *prioNode = (**prioNode).rPtr;
         } else {
             // 删除左右都有子树的节点
-            // 寻找左子树的最大节点
+            // 寻找左子树的最大节点 (ldr序列末尾)
             std::vector<T> result;
             _ldr(nextNode->lPtr, [&result](const T &data) { result.push_back(data); });
-            T max = *std::max_element(result.begin(), result.end());
-            this->del(max);
-            nextNode->data = max;
+            this->del(result.back());
+            nextNode->data = result.back();
         }
     }
 
