@@ -1,21 +1,28 @@
 #include <iostream>
 #include <random>
+#include <chrono>
 #include "sort_functions.hpp"
 
 // 创建一个对象用于记录移动次数和比较次数
+
+static int comparedNum = 0, movedNum = 0;
 struct IntObj {
     int key;
-    int comparedNum = 0, movedNum = 0;
-    bool operator>(IntObj &d2) {
-        comparedNum++;
+
+    bool operator>(const IntObj &d2) {
+        ::comparedNum++;
         return this->key > d2.key;
     }
-    bool operator<(IntObj &d2) {
-        comparedNum++;
+    bool operator<(const IntObj &d2) {
+        ::comparedNum++;
         return this->key < d2.key;
     }
-    void operator=(IntObj &d2) {
-        movedNum++;
+    void operator=(const IntObj &d2) {
+        ::movedNum++;
+        this->key = d2.key;
+    }
+    IntObj(const IntObj &d2){
+        ::movedNum++;
         this->key = d2.key;
     }
     IntObj(int data = 0) : key(data) {}
@@ -27,17 +34,18 @@ struct IntObj {
 
 template<typename T>
 void sort_output(SList<T> list, void (*fun)(SList<T>&)){
+    using namespace std::chrono;
+    comparedNum=movedNum=0;
     std::cout << "排序前：";
     for (int i = 1; i <= list.length(); i++)std::cout << list.R[i] << ' ';
+    auto start = system_clock::now();
     fun(list); // 调用排序函数
+    auto end   = system_clock::now();
+    auto duration = duration_cast<microseconds>(end - start);
     std::cout << "\n排序后：";
     for (int i = 1; i <= list.length(); i++)std::cout << list.R[i] << ' ';
-    int comparedSum=0,movedSum=0;
-    for (int i = 0; i <= list.length(); i++){
-        comparedSum+=list.R[i].comparedNum;
-        movedSum+=list.R[i].movedNum;
-    }
-    std::cout << '\n' << "共比较了" << comparedSum << "次，移动了" << movedSum << "次" << std::endl;
+    std::cout << '\n' << "共比较了" << comparedNum << "次，移动了" << movedNum << "次，花费了"
+              << double(duration.count()) * microseconds::period::num / microseconds::period::den << "秒" << std::endl;
 }
 
 int main() {
@@ -47,11 +55,14 @@ int main() {
     std::uniform_int_distribution<int> uniform_dist(1, 10000);
     SList<IntObj> list;
     // 填充100个随机数
-    std::cout << "在1-10000范围随机填充100个数\n";
-    for (int i = 0; i < 10; ++i) list.R.emplace_back(uniform_dist(e1));
+    std::cout << "在1-10000范围随机填充1000个数\n";
+    for (int i = 0; i < 1000; ++i) list.R.emplace_back(uniform_dist(e1));
 
     std::cout << "\n插入排序：\n";
     sort_output(list,InsertSort);
+
+    std::cout << "\nShell排序：\n";
+    sort_output(list,ShellSort);
 
     std::cout << "\n冒泡排序：\n";
     sort_output(list,BubbleSort);
@@ -59,5 +70,11 @@ int main() {
     std::cout << "\n快速排序：\n";
     sort_output(list,QuickSort);
 
+    std::cout << "\n选择排序：\n";
+    sort_output(list,SelectionSort);
+
+    std::cout << "\n堆排序：\n";
+    sort_output(list,HeapSort);
+    
     return 0;
 }
