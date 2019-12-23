@@ -1,80 +1,72 @@
-#include <iostream>
-#include <random>
-#include <chrono>
-#include "sort_functions.hpp"
+#include "compare_sort.hpp"
+#include "statistical_score.hpp"
 
-// 创建一个对象用于记录移动次数和比较次数
-
-static int comparedNum = 0, movedNum = 0;
-struct IntObj {
-    int key;
-
-    bool operator>(const IntObj &d2) {
-        ::comparedNum++;
-        return this->key > d2.key;
-    }
-    bool operator<(const IntObj &d2) {
-        ::comparedNum++;
-        return this->key < d2.key;
-    }
-    void operator=(const IntObj &d2) {
-        ::movedNum++;
-        this->key = d2.key;
-    }
-    IntObj(const IntObj &d2){
-        ::movedNum++;
-        this->key = d2.key;
-    }
-    IntObj(int data = 0) : key(data) {}
-    friend std::ostream &operator<<(std::ostream &os, const IntObj &obj) {
-        os <<  obj.key;
-        return os;
-    }
-};
-
-template<typename T>
-void sort_output(SList<T> list, void (*fun)(SList<T>&)){
-    using namespace std::chrono;
-    comparedNum=movedNum=0;
-    std::cout << "排序前：";
-    for (int i = 1; i <= list.length(); i++)std::cout << list.R[i] << ' ';
-    auto start = system_clock::now();
-    fun(list); // 调用排序函数
-    auto end   = system_clock::now();
-    auto duration = duration_cast<microseconds>(end - start);
-    std::cout << "\n排序后：";
-    for (int i = 1; i <= list.length(); i++)std::cout << list.R[i] << ' ';
-    std::cout << '\n' << "共比较了" << comparedNum << "次，移动了" << movedNum << "次，花费了"
-              << double(duration.count()) * microseconds::period::num / microseconds::period::den << "秒" << std::endl;
-}
-
-int main() {
+void compare_sort() {
     // 创建随机数生成器
     std::random_device r;
     std::default_random_engine e1(r());
-    std::uniform_int_distribution<int> uniform_dist(1, 10000);
+    std::uniform_int_distribution<int> randNum(1, 10000);
     SList<IntObj> list;
     // 填充100个随机数
     std::cout << "在1-10000范围随机填充1000个数\n";
-    for (int i = 0; i < 1000; ++i) list.R.emplace_back(uniform_dist(e1));
+    for (int i = 0; i < 10000; ++i) list.R.emplace_back(randNum(e1));
 
     std::cout << "\n插入排序：\n";
-    sort_output(list,InsertSort);
-
+    sort_output(list, InsertSort);
     std::cout << "\nShell排序：\n";
-    sort_output(list,ShellSort);
-
+    sort_output(list, ShellSort);
     std::cout << "\n冒泡排序：\n";
-    sort_output(list,BubbleSort);
-
+    sort_output(list, BubbleSort);
     std::cout << "\n快速排序：\n";
-    sort_output(list,QuickSort);
-
+    sort_output(list, QuickSort);
     std::cout << "\n选择排序：\n";
-    sort_output(list,SelectionSort);
-
+    sort_output(list, SelectionSort);
     std::cout << "\n堆排序：\n";
-    sort_output(list,HeapSort);
-    
-    return 0;
+    sort_output(list, HeapSort);
+    std::cout << "\n归并排序：\n";
+    sort_output(list, MergeSort);
 }
+
+void statistical_score() {
+    // 创建随机数生成器
+    std::random_device r;
+    std::default_random_engine e(r());
+    std::uniform_int_distribution<int> randScore(1, 100), randNameIndex(0, 14);
+
+    SList<StuInfo> stuInfo;
+    std::cout << "添加100个同学的信息和成绩" << std::endl;
+    // 随机拼凑一些常见的名字
+    std::string name[2][15] = {{"赵", "钱", "孙", "李", "周", "吴", "郑", "王", "陈", "贾", "刘", "张", "孔", "严", "林"},
+                               {"建", "国", "天", "雨", "明", "涵", "思", "丽", "田", "彤", "若", "梦", "欣", "佳", ""}};
+    for (int i = 0; i < 100; i++) {
+        std::vector<int> grades;
+        for (int j = 0; j < 5; ++j) grades.emplace_back(randScore(e));
+        auto s = std::to_string(i);
+        stuInfo.R.emplace_back(2018211000 + i,
+                               name[0][randNameIndex(e)] + name[1][randNameIndex(e)] + name[1][randNameIndex(e)],
+                               grades);
+    }
+    for (int i = 0; i < stuInfo.length(); ++i) {
+        std::cout << stuInfo[i] << std::endl;
+    }
+
+    // 可以更换成上一个函数中提到的任一排序方法
+    QuickSort(stuInfo);
+    std::cout << "\n排序后输出几个同学的信息和成绩" << std::endl;
+    int rank=1,lastRank=0,lastRankScore=-1;
+    for (int i = 0; i < stuInfo.length(); ++i) {
+        if(lastRankScore!=stuInfo[i].getSum()){
+            lastRank = rank;
+            lastRankScore=stuInfo[i].getSum();
+        }
+        std::cout << "排名: "<< lastRank << ' ' <<stuInfo[i] << std::endl;
+        ++rank;
+    }
+}
+
+int main() {
+//    compare_sort();
+//    puts("\n\n\n\n\n");
+    statistical_score();
+}
+
