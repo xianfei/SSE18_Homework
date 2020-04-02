@@ -1,6 +1,6 @@
-#include <LiquidCrystal_I2C.h>
+#include "LiquidCrystal_I2C.h"
 #include "dht11.h"
-#include<Wire.h>
+
 LiquidCrystal_I2C lcd(0x20,16,2);//设置LCD的地址，2行，每行16字符
 dht11 DHT;
 #define DHT11_PIN 4
