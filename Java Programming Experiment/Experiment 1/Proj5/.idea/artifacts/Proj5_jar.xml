@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Proj5:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Proj5_jar</output-path>
+    <root id="archive" name="Proj5.jar">
+      <element id="module-output" name="Proj5" />
+      <element id="dir-copy" path="$PROJECT_DIR$/未命名文件夹" />
+    </root>
+  </artifact>
+</component>
