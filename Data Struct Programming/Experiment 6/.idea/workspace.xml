@@ -24,32 +24,21 @@
   <component name="ProjectId" id="1UfEHtDTcyfOGawXpazGlZqkIwH" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
-    <configuration name="Experiment_6" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Experiment_6" TARGET_NAME="Experiment_6" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Experiment_6" RUN_TARGET_NAME="Experiment_6">
+    <configuration name="Experiment_6" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Experiment_6" TARGET_NAME="Experiment_6" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Experiment_6" RUN_TARGET_NAME="Experiment_6">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -63,11 +52,12 @@
       <updated>1575739165194</updated>
       <workItem from="1575739171099" duration="1738000" />
       <workItem from="1575822456109" duration="1141000" />
+      <workItem from="1589109477585" duration="117000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="283" y="34" key="#New_File_Extensions" timestamp="1575739225340">
