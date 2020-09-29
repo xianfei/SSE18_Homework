@@ -1,4 +1,5 @@
- f=imread('车牌图像.jpg');   
+
+f=imread('车牌图像.jpg');   
 %f=imread('播音员（gray）.jpg');
 I1 = f;
 I2 = area_growing(f,100);
