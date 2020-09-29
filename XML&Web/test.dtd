@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT story ((title, byline, para+))>
+<!ELEMENT quote (#PCDATA | company)*>
+<!ELEMENT position (#PCDATA)>
+<!ELEMENT para (#PCDATA | quote | position | company)*>
+<!ATTLIST para lead (yes | no) #REQUIRED>
+<!ELEMENT lastname (#PCDATA)>
+<!ELEMENT firstname (#PCDATA)>
+<!ELEMENT date (#PCDATA)>
+<!ELEMENT company (#PCDATA)>
+<!ELEMENT byline ((author, position, date))>
+<!ELEMENT author ((firstname, lastname))>
