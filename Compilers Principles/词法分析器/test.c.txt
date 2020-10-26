@@ -1,0 +1,18 @@
+int main()
+{
+    int a = 0;
+    double b = 2.3E+100;
+    char c = 'm';
+    int d[5]={1,2,3};
+    /* int e = f; */
+    // will not process
+    if (a != b)
+    {
+        while (a <= b)
+	a++;
+        while (a >= b)
+	a--;
+    }
+    float errNum = 2.3E;
+    `
+}
