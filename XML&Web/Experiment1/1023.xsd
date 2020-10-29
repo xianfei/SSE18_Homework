@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="college">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="grade" minOccurs="1" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="class" minOccurs="2" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="student" minOccurs="1" maxOccurs="3"/>
+									</xs:sequence>
+									<xs:attribute name="cid" type="xs:integer"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="type" type="xs:integer"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="student">
+		<xs:complexType mixed = "true">
+			<xs:sequence>
+				<xs:element name="id">
+					<xs:complexType>
+						<xs:attribute name="sid" type="xs:integer"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="email" type="xs:string"/>
+				<xs:element name="tel">
+					<xs:complexType>
+						<xs:attribute name="no" type="xs:positiveInteger"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="address">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="province" type="xs:string"/>
+							<xs:element name="city" type="xs:string"/>
+							<xs:element name="detail">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:string">
+											<xs:attribute name="postcode" type="xs:positiveInteger" />
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

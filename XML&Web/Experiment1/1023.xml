@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<college xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file://Mac/Home/Downloads/1023.xsd">
+	<grade type="2020">
+		<class cid="2020211504">
+			<student>Bill
+				<id sid="2020211985"/>
+				<email>bill@bupt.edu.cn</email>
+				<tel no="17668882222"/>
+				<address>
+					<province>Shanxi</province>
+					<city>Taiyuan</city>
+					<detail postcode="345678">No10,Center Steert</detail>
+				</address>
+			</student>
+			<student>Andy
+				<id sid="2020211996"/>
+				<email>ilove996@bupt.edu.cn</email>
+				<tel no="17668886666"/>
+				<address>
+					<province>Guangdong</province>
+					<city>Guangzhou</city>
+					<detail postcode="345988">No12,XiDong Steert</detail>
+				</address>
+			</student>
+		</class>
+		<class cid="2020211505">
+			<student>Alex
+				<id sid="2020211999"/>
+				<email>test@bupt.edu.cn</email>
+				<tel no="17668881111"/>
+				<address>
+					<province>Beijing</province>
+					<city>Xicheng</city>
+					<detail postcode="100001">No1,ChangAn Steert</detail>
+				</address>
+			</student>
+		</class>
+	</grade>
+</college>
