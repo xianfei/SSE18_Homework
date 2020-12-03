@@ -1,0 +1,3 @@
+此文档完全按照cubemx生成文档后的工程目录来移植ucos，为了迎合新手去练习移植，并没有什么太麻烦的地方，时基也是用的默认生成的1ms时基，只用修改startup_.s的相应部分，将systick产生的时间滴答配为ucos的时基。
+
+Demo 1,2 with keyscan & USART1 basic in IRQ mode	;jkuang
