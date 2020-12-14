@@ -383,14 +383,14 @@ void analyse(std::string input_string) {
 }
 
 int main(){
-    std::string string = "(num**num)($";
+    std::string string = "(num*num+(num/num)$";
     std::cout << "输入为：" << string << "\n分析结果：\n";
-    try{
+//    try{
         analyse(string);
-    }catch(std::exception &e){
-        std::cerr << "分析错误 " << e.what() << std::endl ;
-        return -1;
-    }
+//    }catch(std::exception &e){
+//        std::cerr << "分析错误 " << e.what() << std::endl ;
+//        return -1;
+//    }
     return 0;
 }
 
