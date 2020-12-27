@@ -1,0 +1,39 @@
+---- huart1 Matches (7 in 4 files) ----
+Main.c (d:\develop\...\src):282
+	uint32_t isrflags 	= READ_REG(huart1.Instance->SR);
+	uint32_t cr1its 		= READ_REG(huart1.Instance->CR1);
+	uint32_t cr3its 		= READ_REG(huart1.Instance->CR3);
+	uint32_t errorflags = 0x00U;
+
+Stm32f4xx_it.c (d:\develop\...\src):43
+extern UART_HandleTypeDef huart1;
+
+/******************************************************************************/
+Stm32f4xx_it.c (d:\develop\...\src):79
+  HAL_UART_IRQHandler(&huart1);
+  /* USER CODE BEGIN USART1_IRQn 1 */
+
+Usart.c (d:\develop\...\src):44
+UART_HandleTypeDef huart1;
+
+/* USART1 init function */
+Usart.c (d:\develop\...\src):51
+  huart1.Instance = USART1;
+  huart1.Init.BaudRate = 115200;
+  huart1.Init.WordLength = UART_WORDLENGTH_8B;
+  huart1.Init.StopBits = UART_STOPBITS_1;
+  huart1.Init.Parity = UART_PARITY_NONE;
+  huart1.Init.Mode = UART_MODE_TX_RX;
+  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart1) != HAL_OK)
+  {
+    Error_Handler();
+Usart.c (d:\develop\...\src):128
+	HAL_UART_Transmit(&huart1, pData, strlen((const char*)pData), 100);
+}
+
+Usart.h (d:\develop\...\inc):49
+extern UART_HandleTypeDef huart1;
+
+/* USER CODE BEGIN Private defines */

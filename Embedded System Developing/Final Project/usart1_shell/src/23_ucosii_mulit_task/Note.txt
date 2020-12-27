@@ -1,0 +1,9 @@
+此文档完全按照cubemx生成文档后的工程目录来移植ucos，为了迎合新手去练习移植，并没有什么太麻烦的地方，时基也是用的默认生成的1ms时基，只用修改startup_.s的相应部分，将systick产生的时间滴答配为ucos的时基。
+
+Demo 1,2,3	;jkuang
+
+1. USART1：int模式；发送；接收仅echo back；
+2. msg：仅short msg；
+3. KEYSCAN：delay去抖动；delay查询模式；keyswitch状态；msg（instance）驱动；
+4. Timer测试：msg驱动，无state；无instance
+5. demo1,2保留；
