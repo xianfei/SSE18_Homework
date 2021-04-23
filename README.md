@@ -27,7 +27,7 @@ XML&Web | XML&Web | 大三上 | 傅湘玲老师 | 完成
 数值计算实验 | Numerical Computation | 大三上 | 漆涛老师 | 完成 
 计算机网络实验 | Computer Network Experiment | 大三上 | 王文东老师 | 完成 
 嵌入式系统开发 | Embedded System Developing | 大三上 | 邝坚老师 | 完成
-软件过程改进 | Test-Driven Development | 大三下 | 袁玉宇老师 | 
+软件过程改进 | Software Process Improvement | 大三下 | 袁玉宇老师 | 
 移动终端开发 | Android Developing | 大三下 | 谢坤老师 | 
 
 ## 2.这是什么
