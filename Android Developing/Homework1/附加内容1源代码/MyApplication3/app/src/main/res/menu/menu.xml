@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="设置"/>
+
+    <item
+        android:id="@+id/action_new"
+        android:orderInCategory="101"
+        android:title="新建"/>
+
+    <item
+        android:id="@+id/action_print"
+        android:orderInCategory="101"
+        android:title="打印"/>
+
+
+    <item
+        android:id="@+id/action_mail"
+        android:orderInCategory="101"
+        android:title="邮件"/>
+
+</menu>
