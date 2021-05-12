@@ -1,5 +1,5 @@
 # SSE18_Homework
-北京邮电大学~~软件学院~~计算机学院软件工程专业18级作业代码汇总（将coding作业开源的良心工程）
+北京邮电大学~~软件学院~~计算机学院软件工程专业18级作业代码汇总
 
 （~~讲道理来说应该在未来的好几届这些题目都不会变~~）
 
@@ -29,6 +29,8 @@ XML&Web | XML&Web | 大三上 | 傅湘玲老师 | 完成
 嵌入式系统开发 | Embedded System Developing | 大三上 | 邝坚老师 | 完成
 软件过程改进 | Software Process Improvement | 大三下 | 袁玉宇老师 | 
 移动终端开发 | Android Developing | 大三下 | 谢坤老师 | 
+大数据原理技术 | BigData Hadoop MapReduce Experiment | 大三下 | 孙鹏飞老师 | 
+云计算技术 | Cloud Compute Technology | 大三下 | 崔毅东老师 | 
 
 ## 2.这是什么
 
@@ -43,6 +45,7 @@ emmmmm自己看着办吧
 GitHub上发issue, ~~如果你也是北邮软院的可以来问我~~
 
 ## 5.联系方式
-- QQ：979719361
+
+- xianfei@bupt.edu.cn
 
 欢迎其他年级或其他任课老师的发Pull Requests加入到这个项目
