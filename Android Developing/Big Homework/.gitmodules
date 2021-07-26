@@ -1,0 +1,3 @@
+[submodule "bupt_countdown"]
+	path = bupt_countdown
+	url = https://github.com/xianfei/bupt_countdown
