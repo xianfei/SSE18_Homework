@@ -1,8 +1,6 @@
 [submodule "TDD2021"]
 	path = TDD2021
 	url = https://github.com/yuanyuyu/TDD2021
-
-
-[submodule "bupt_countdown"]
-	path = "Android Developing/Big Homework/bupt_countdown"
+[submodule "Android Developing/Big Homework/bupt_countdown"]
+	path = Android Developing/Big Homework/bupt_countdown
 	url = https://github.com/xianfei/bupt_countdown
