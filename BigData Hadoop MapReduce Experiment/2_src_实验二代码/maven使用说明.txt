@@ -1,0 +1,7 @@
+在当前文件夹下以ubuntu为例（openjdk11）其他jdk版本请修改xml文件中的jdk版本号
+
+sudo apt install maven
+
+mvn compile
+
+mvn exec:java -Dexec.mainClass="InvertedIndex"
