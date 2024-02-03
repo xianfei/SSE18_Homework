@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/DataSructLearn/expr01/01city_link.cpp" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/DataSructLearn/expr02/bracket_matching.c" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DataSructLearn/expr02/dec2oct.c" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/DataSructLearn/expr06/bi_search_tree.c" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/DataSructLearn/expr06/hash_table.c" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/DataSructLearn/expr07/quick_sort.c" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DataSructLearn/expr07/test01.c" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/DataSructLearn/expr07/test02.c" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/auto_machine/expr01.cpp" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/auto_machine/expr01_archive.cpp" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/auto_machine/expr01_self.c" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/auto_machine/expr02.cpp" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/auto_machine/expr03.cpp" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/auto_machine/test02.cpp" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>
