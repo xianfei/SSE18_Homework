@@ -1,0 +1,10 @@
+<!-- Dashboard.fxml -->
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fishlulu.javafxlearn.school.finale.test03.controller.DashboardController">
+  <Label fx:id="capacityLabel" />
+  <Label fx:id="packagesLabel" />
+</VBox>
