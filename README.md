@@ -66,10 +66,11 @@ GitHub上发issue, ~~如果你也是北邮软院的可以来问我~~
 | -------------------- | ----------------------------------------------- | ------------------------------------------------------------ | -------- | ---------- | ------- |
 | C Programming 实验   | C Programming Experiment/fishlulu               | 实验的源码和报告<br>平时作业                                 | 大一上   | 贾红娓老师 | 完成    |
 | 软件工程专业导论实验 | Introduction to SE Experiment(Arduino)/fishlulu | 电子闹钟实验<br>温湿度监视器实验<br>原创祖安门铃实验<br>期末项目展示网页 | 大一上   | 傅湘玲老师 | 完成    |
-| linux实验            | Linux Shell Programming/fishlulu                | shell编程实验项目源码及演示视频                              | 大二上   | 金昕老师 | 完成    |
+| linux实验            | Linux Shell Programming/fishlulu                | shell编程实验项目源码及演示视频                              | 大二上   | 赵方老师 | 完成    |
 | 汇编语言实践         | Assembly Language/fishlulu                      | 实验1-6的实验指导书,源码以及实验报告 | 大二上   | 杨谈老师   | 完成   |
 | 数据结构实验         | Data Struct Programming/fishlulu                | 实验1-7实验报告+指导书<br>配套作业(习题) | 大二上   | 蔡院强老师 | 完成  |
 | Java SE 实验         | Java Programming Experiment/fishlulu            | java周作业1-9<br> java期中期末实验大作业 | 大二上   | 崔毅东老师 | 完成  |
+| 形式语言与自动机(**新增**) | Formal Language and Automata Theory/fishlulu | 期中实验大作业源码+报告 | 大二上 | 杨正球老师 | 完成 |
 
 ## 作者的碎碎念
 
